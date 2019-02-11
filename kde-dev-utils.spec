@@ -5,19 +5,19 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kde-dev-utils
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kde-dev-utils-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kde-dev-utils-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kde-dev-utils-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kde-dev-utils-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kde-dev-utils-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kde-dev-utils-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
-Requires: kde-dev-utils-bin
-Requires: kde-dev-utils-lib
-Requires: kde-dev-utils-data
-Requires: kde-dev-utils-license
-Requires: kde-dev-utils-locales
+Requires: kde-dev-utils-bin = %{version}-%{release}
+Requires: kde-dev-utils-data = %{version}-%{release}
+Requires: kde-dev-utils-lib = %{version}-%{release}
+Requires: kde-dev-utils-license = %{version}-%{release}
+Requires: kde-dev-utils-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 
@@ -27,8 +27,8 @@ No detailed description available
 %package bin
 Summary: bin components for the kde-dev-utils package.
 Group: Binaries
-Requires: kde-dev-utils-data
-Requires: kde-dev-utils-license
+Requires: kde-dev-utils-data = %{version}-%{release}
+Requires: kde-dev-utils-license = %{version}-%{release}
 
 %description bin
 bin components for the kde-dev-utils package.
@@ -45,8 +45,8 @@ data components for the kde-dev-utils package.
 %package lib
 Summary: lib components for the kde-dev-utils package.
 Group: Libraries
-Requires: kde-dev-utils-data
-Requires: kde-dev-utils-license
+Requires: kde-dev-utils-data = %{version}-%{release}
+Requires: kde-dev-utils-license = %{version}-%{release}
 
 %description lib
 lib components for the kde-dev-utils package.
@@ -69,26 +69,26 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-18.08.0
+%setup -q -n kde-dev-utils-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535195903
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549864582
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535195903
+export SOURCE_DATE_EPOCH=1549864582
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kde-dev-utils
-cp COPYING %{buildroot}/usr/share/doc/kde-dev-utils/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/kde-dev-utils/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
+cp COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-dev-utils/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -124,9 +124,9 @@ popd
 /usr/lib64/qt5/plugins/quithumbnail.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kde-dev-utils/COPYING
-/usr/share/doc/kde-dev-utils/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kde-dev-utils/COPYING
+/usr/share/package-licenses/kde-dev-utils/COPYING.LIB
 
 %files locales -f kuiviewer.lang -f kpartloader.lang
 %defattr(-,root,root,-)
