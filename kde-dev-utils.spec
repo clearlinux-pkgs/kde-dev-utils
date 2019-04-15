@@ -6,11 +6,11 @@
 #
 Name     : kde-dev-utils
 Version  : 18.12.3
-Release  : 4
+Release  : 5
 URL      : https://download.kde.org/stable/applications/18.12.3/src/kde-dev-utils-18.12.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.3/src/kde-dev-utils-18.12.3.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.3/src/kde-dev-utils-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Summary  : Small utilities for developers using KDE/Qt libs/frameworks
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
 Requires: kde-dev-utils-bin = %{version}-%{release}
@@ -76,16 +76,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551995434
+export SOURCE_DATE_EPOCH=1555326409
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551995434
+export SOURCE_DATE_EPOCH=1555326409
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/COPYING
