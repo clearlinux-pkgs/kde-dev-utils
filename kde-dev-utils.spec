@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kde-dev-utils
-Version  : 18.12.3
-Release  : 5
-URL      : https://download.kde.org/stable/applications/18.12.3/src/kde-dev-utils-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/kde-dev-utils-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/kde-dev-utils-18.12.3.tar.xz.sig
+Version  : 19.04.0
+Release  : 6
+URL      : https://download.kde.org/stable/applications/19.04.0/src/kde-dev-utils-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/kde-dev-utils-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/kde-dev-utils-19.04.0.tar.xz.sig
 Summary  : Small utilities for developers using KDE/Qt libs/frameworks
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
@@ -69,14 +69,14 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-18.12.3
+%setup -q -n kde-dev-utils-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555326409
+export SOURCE_DATE_EPOCH=1555609182
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -84,7 +84,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555326409
+export SOURCE_DATE_EPOCH=1555609182
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/COPYING
@@ -114,13 +114,10 @@ popd
 /usr/share/icons/hicolor/scalable/apps/kuiviewer.svg
 /usr/share/kservices5/designerthumbnail.desktop
 /usr/share/kservices5/kuiviewer_part.desktop
-/usr/share/kxmlgui5/kpartloader/kpartloaderui.rc
-/usr/share/kxmlgui5/kuiviewer/kuiviewerui.rc
-/usr/share/kxmlgui5/kuiviewerpart/kuiviewer_part.rc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/qt5/plugins/kuiviewerpart.so
+/usr/lib64/qt5/plugins/kf5/parts/kuiviewerpart.so
 /usr/lib64/qt5/plugins/quithumbnail.so
 
 %files license
