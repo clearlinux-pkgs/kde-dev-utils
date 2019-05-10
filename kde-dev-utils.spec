@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kde-dev-utils
-Version  : 19.04.0
-Release  : 6
-URL      : https://download.kde.org/stable/applications/19.04.0/src/kde-dev-utils-19.04.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.0/src/kde-dev-utils-19.04.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.0/src/kde-dev-utils-19.04.0.tar.xz.sig
+Version  : 19.04.1
+Release  : 7
+URL      : https://download.kde.org/stable/applications/19.04.1/src/kde-dev-utils-19.04.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.1/src/kde-dev-utils-19.04.1.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.1/src/kde-dev-utils-19.04.1.tar.xz.sig
 Summary  : Small utilities for developers using KDE/Qt libs/frameworks
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
@@ -20,6 +20,7 @@ Requires: kde-dev-utils-license = %{version}-%{release}
 Requires: kde-dev-utils-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : qttools-staticdev
 
 %description
 No detailed description available
@@ -69,22 +70,29 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-19.04.0
+%setup -q -n kde-dev-utils-19.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555609182
+export SOURCE_DATE_EPOCH=1557520457
 mkdir -p clr-build
 pushd clr-build
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555609182
+export SOURCE_DATE_EPOCH=1557520457
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/COPYING
