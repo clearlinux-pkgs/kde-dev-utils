@@ -6,11 +6,11 @@
 #
 Name     : kde-dev-utils
 Version  : 19.08.1
-Release  : 11
+Release  : 12
 URL      : https://download.kde.org/stable/applications/19.08.1/src/kde-dev-utils-19.08.1.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.08.1/src/kde-dev-utils-19.08.1.tar.xz
 Source1 : https://download.kde.org/stable/applications/19.08.1/src/kde-dev-utils-19.08.1.tar.xz.sig
-Summary  : Small utilities for developers using KDE/Qt libs/frameworks
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
 Requires: kde-dev-utils-bin = %{version}-%{release}
@@ -20,7 +20,7 @@ Requires: kde-dev-utils-license = %{version}-%{release}
 Requires: kde-dev-utils-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : qttools-staticdev
+BuildRequires : qttools-dev
 
 %description
 No detailed description available
@@ -77,10 +77,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567698270
+export SOURCE_DATE_EPOCH=1569728215
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -90,11 +89,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567698270
+export SOURCE_DATE_EPOCH=1569728215
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/COPYING
