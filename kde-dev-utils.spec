@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kde-dev-utils
-Version  : 19.08.3
-Release  : 14
-URL      : https://download.kde.org/stable/applications/19.08.3/src/kde-dev-utils-19.08.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.3/src/kde-dev-utils-19.08.3.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.3/src/kde-dev-utils-19.08.3.tar.xz.sig
+Version  : 19.12.0
+Release  : 15
+URL      : https://download.kde.org/stable/release-service/19.12.0/src/kde-dev-utils-19.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.0/src/kde-dev-utils-19.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.0/src/kde-dev-utils-19.12.0.tar.xz.sig
 Summary  : Small utilities for developers using KDE/Qt libs/frameworks
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
@@ -70,14 +70,15 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-19.08.3
+%setup -q -n kde-dev-utils-19.12.0
+cd %{_builddir}/kde-dev-utils-19.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573165600
+export SOURCE_DATE_EPOCH=1576531602
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -94,11 +95,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1573165600
+export SOURCE_DATE_EPOCH=1576531602
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
-cp %{_builddir}/kde-dev-utils-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
-cp %{_builddir}/kde-dev-utils-19.08.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-dev-utils/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kde-dev-utils-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
+cp %{_builddir}/kde-dev-utils-19.12.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-dev-utils/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 pushd clr-build
 %make_install
 popd
@@ -124,6 +125,8 @@ popd
 /usr/share/icons/hicolor/scalable/apps/kuiviewer.svg
 /usr/share/kservices5/designerthumbnail.desktop
 /usr/share/kservices5/kuiviewer_part.desktop
+/usr/share/metainfo/org.kde.kuiviewer.metainfo.xml
+/usr/share/metainfo/org.kde.kuiviewerpart.metainfo.xml
 
 %files lib
 %defattr(-,root,root,-)
