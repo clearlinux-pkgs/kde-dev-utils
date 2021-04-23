@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kde-dev-utils
-Version  : 20.12.3
-Release  : 28
-URL      : https://download.kde.org/stable/release-service/20.12.3/src/kde-dev-utils-20.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.12.3/src/kde-dev-utils-20.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.12.3/src/kde-dev-utils-20.12.3.tar.xz.sig
+Version  : 21.04.0
+Release  : 29
+URL      : https://download.kde.org/stable/release-service/21.04.0/src/kde-dev-utils-21.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.0/src/kde-dev-utils-21.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.0/src/kde-dev-utils-21.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.0
+License  : LGPL-2.0 LGPL-3.0
 Requires: kde-dev-utils-bin = %{version}-%{release}
 Requires: kde-dev-utils-data = %{version}-%{release}
 Requires: kde-dev-utils-lib = %{version}-%{release}
@@ -71,15 +71,15 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-20.12.3
-cd %{_builddir}/kde-dev-utils-20.12.3
+%setup -q -n kde-dev-utils-21.04.0
+cd %{_builddir}/kde-dev-utils-21.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618667676
+export SOURCE_DATE_EPOCH=1619208595
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -95,11 +95,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618667676
+export SOURCE_DATE_EPOCH=1619208595
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
-cp %{_builddir}/kde-dev-utils-20.12.3/COPYING %{buildroot}/usr/share/package-licenses/kde-dev-utils/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
-cp %{_builddir}/kde-dev-utils-20.12.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-dev-utils/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kde-dev-utils-21.04.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kde-dev-utils-21.04.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kde-dev-utils-21.04.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kde-dev-utils-21.04.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -135,8 +137,9 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kde-dev-utils/a21ac62aee75f8fcb26b1de6fc90e5eea271854c
-/usr/share/package-licenses/kde-dev-utils/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+/usr/share/package-licenses/kde-dev-utils/20079e8f79713dce80ab09774505773c926afa2a
+/usr/share/package-licenses/kde-dev-utils/757b86330df80f81143d5916b3e92b4bcb1b1890
+/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
 
 %files locales -f kuiviewer.lang -f kpartloader.lang
 %defattr(-,root,root,-)
