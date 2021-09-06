@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kde-dev-utils
-Version  : 21.04.2
-Release  : 30
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kde-dev-utils-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kde-dev-utils-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kde-dev-utils-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 31
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kde-dev-utils-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kde-dev-utils-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kde-dev-utils-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.0 LGPL-3.0
@@ -71,37 +71,37 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-21.04.2
-cd %{_builddir}/kde-dev-utils-21.04.2
+%setup -q -n kde-dev-utils-21.08.1
+cd %{_builddir}/kde-dev-utils-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623377109
+export SOURCE_DATE_EPOCH=1630908378
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623377109
+export SOURCE_DATE_EPOCH=1630908378
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
-cp %{_builddir}/kde-dev-utils-21.04.2/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kde-dev-utils-21.04.2/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kde-dev-utils-21.04.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kde-dev-utils-21.04.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kde-dev-utils-21.08.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kde-dev-utils-21.08.1/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kde-dev-utils-21.08.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kde-dev-utils-21.08.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
