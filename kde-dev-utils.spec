@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kde-dev-utils
-Version  : 22.08.1
-Release  : 44
-URL      : https://download.kde.org/stable/release-service/22.08.1/src/kde-dev-utils-22.08.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.1/src/kde-dev-utils-22.08.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.1/src/kde-dev-utils-22.08.1.tar.xz.sig
+Version  : 22.08.2
+Release  : 45
+URL      : https://download.kde.org/stable/release-service/22.08.2/src/kde-dev-utils-22.08.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.08.2/src/kde-dev-utils-22.08.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.08.2/src/kde-dev-utils-22.08.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.0 LGPL-3.0
@@ -72,15 +72,15 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-22.08.1
-cd %{_builddir}/kde-dev-utils-22.08.1
+%setup -q -n kde-dev-utils-22.08.2
+cd %{_builddir}/kde-dev-utils-22.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662783361
+export SOURCE_DATE_EPOCH=1665763996
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -96,13 +96,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662783361
+export SOURCE_DATE_EPOCH=1665763996
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
-cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/20079e8f79713dce80ab09774505773c926afa2a || :
+cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/757b86330df80f81143d5916b3e92b4bcb1b1890 || :
+cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32 || :
+cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/e458941548e0864907e654fa2e192844ae90fc32 || :
 pushd clr-build
 %make_install
 popd
