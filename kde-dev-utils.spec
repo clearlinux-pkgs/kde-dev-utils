@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kde-dev-utils
-Version  : 23.04.2
-Release  : 55
-URL      : https://download.kde.org/stable/release-service/23.04.2/src/kde-dev-utils-23.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.2/src/kde-dev-utils-23.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.2/src/kde-dev-utils-23.04.2.tar.xz.sig
+Version  : 23.04.3
+Release  : 56
+URL      : https://download.kde.org/stable/release-service/23.04.3/src/kde-dev-utils-23.04.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.04.3/src/kde-dev-utils-23.04.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.04.3/src/kde-dev-utils-23.04.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.0 LGPL-3.0
@@ -76,15 +76,15 @@ locales components for the kde-dev-utils package.
 
 
 %prep
-%setup -q -n kde-dev-utils-23.04.2
-cd %{_builddir}/kde-dev-utils-23.04.2
+%setup -q -n kde-dev-utils-23.04.3
+cd %{_builddir}/kde-dev-utils-23.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686531866
+export SOURCE_DATE_EPOCH=1688867909
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -117,7 +117,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1686531866
+export SOURCE_DATE_EPOCH=1688867909
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-dev-utils
 cp %{_builddir}/kde-dev-utils-%{version}/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-dev-utils/20079e8f79713dce80ab09774505773c926afa2a || :
